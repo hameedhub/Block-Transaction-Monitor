@@ -25,8 +25,10 @@ func ErrorResponse(w http.ResponseWriter, statusCode int, errorCode int, message
 		ErrorCode: errorCode,
 		Message: message,
 	})
+	return
 }
 func SuccessResponse(w http.ResponseWriter, statusCode int, message string,  data interface{}) {
 	w.WriteHeader(statusCode)
 	json.NewEncoder(w).Encode(Success{Status: true, Message: message, Data: data})
+	return
 }

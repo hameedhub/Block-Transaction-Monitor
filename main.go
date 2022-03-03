@@ -17,18 +17,20 @@ import (
 )
 
 func main(){
-	// load config vars
+	// load config vars ...
 	config, err := util.LoadConfig(".")
 	if err != nil{
 		panic(err)
 	}
 
+	// database ...
 	db, err := gorm.Open(postgres.Open(config.DBSource))
 	db.AutoMigrate(&model.Block{})
 	db.AutoMigrate(&model.Transaction{})
 
 	blockService := services.NewBlockService(db, config)
 
+	// block tracker ...
 	blockService.TrackBlock()
 	blockController := controller.NewBlockController(blockService)
 
@@ -40,7 +42,7 @@ func main(){
 
 	route.GET("/transactions", blockController.GetTransaction)
 	route.GET("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("ERC1155 Event"))
+		util.SuccessResponse(w, 200, "ERC1155", nil)
 	})
 
 	server := http.Server{

@@ -102,11 +102,11 @@ func (s blockService) SaveTransaction(log []byte, client *jsonrpc.Client) {
 		var ethTo float64
 		transaction := util.GetTransactionByHash(hash, client)
 
-		if len(transaction.From.Bytes()) > 0 {
+		if transaction.From.String() != "" {
 			from = transaction.From.String()
 			ethFrom= util.GetBalance(from, client)
 		}
-		if len(transaction.To.Bytes()) >0{
+		if transaction.To.String() != "" {
 			to = transaction.To.String()
 			ethTo= util.GetBalance(to, client)
 		}
