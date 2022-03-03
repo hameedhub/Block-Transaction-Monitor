@@ -1,0 +1,4 @@
+PORT: ":9000"
+DBDriver : ""
+DBSource : "postgres://postgres:postgres@localhost:5432/ERC1155"
+RPCURL: "https://api.mycryptoapi.com/eth"
