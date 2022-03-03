@@ -1,5 +1,5 @@
 # ERC1155
-> ERC1155 Block transaction event listener for testnet or mainnet/ Dashboard API
+> ERC Block transaction event listener using jsonrpc for testnet or mainnet/ Dashboard API
 
 
 ## Installing / Getting started
